@@ -2,9 +2,9 @@
 
 ## note
 - .env file shared to email
-- demo csv template file stored in data directory
+- questions csv template file stored in data directory
 - profile pictures are storing into local upload directory
-- postman collection and environment file shared to email
+- postman collection and environment file stored in data directory
 
 ### install dependencies
 ```bash

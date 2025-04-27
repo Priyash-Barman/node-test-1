@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "42957654-d4eb-4801-b1a0-de735cfd53d9",
+		"name": "node-app-1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11123658"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "user-login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"priyashbarman9+1@gmail.com\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/user-login",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"user-login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"priyash b\",\r\n    \"email\":\"priyashbarman9+1@gmail.com\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/user",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view-user-profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/user-profile",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"user-profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit-user-profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "priyash barman",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "priyashbarman9+1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "profile_picture",
+									"type": "file",
+									"src": "postman-cloud:///1eea63b6-c1dd-4600-a35d-c8f8fdd0c3d9"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/v1/user-profile",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"user-profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "get-all-categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/categories",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "question",
+			"item": [
+				{
+					"name": "questions-for-each-category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/category-questions",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"category-questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add-question-bulk-csv",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "questions_csv",
+									"type": "file",
+									"src": "postman-cloud:///1f0236b9-8c25-41f0-b052-1f1882eb5f84"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}api/v1/add-questions-csv",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"add-questions-csv"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
